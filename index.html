@@ -3,8 +3,14 @@
     <head> 
         <meta charset="UTF-8"> 
         <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="我的个人网站">
+        <meta property="og:description" content="你好，我叫:朱凌瑀，一名技术爱好者">
+        <meta property="og:url" content="https://zhulingyu666.github.io/">
+        <meta name="description" content="朱凌瑀，我的个人网站">
+        <meta name="keywords" content="朱凌瑀, 个人网站, 前端开发">
         <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-        <title>我的个人网站</title>
+        <title>我的个人网站-朱凌瑀</title>
     </head> 
     <body> 
     <style>
@@ -165,15 +171,14 @@
   max-width:var(--max-width);
   max-height:800px;
   background-color:#FFFFFF90;
-  display:none;/*flex，默认为none*/
+  display:none;/*block，默认为none*/
   backdrop-filter: blur(2px);
-  border-bottom-right-radius: 100px;
+  border-bottom-right-radius: 5vw;
   will-change: clip-path; /* 提前告诉浏览器要动画 */
   transform: translateZ(0); /* 强制GPU加速 */
   backface-visibility: hidden; /* 减少闪烁 */
   animation: navigationappear 0.4s ease-out;
   z-index:2;
-  flex-wrap: wrap;
   }
   @keyframes navigationappear{
   from{
@@ -196,6 +201,11 @@
   font-weight: bold;
   padding-left: 10px;
   cursor: pointer;
+  transition: 0.15s;
+  margin-top:2px;
+  }
+  .linkbox:hover{
+  backdrop-filter: blur(5px);
   }
     </style>
     <div id="topbar">
@@ -210,7 +220,7 @@
     </div>
     <div id="navigation-box">
      <div class="linkbox" href="#personal-introduction-box">简介</div>
-     <div class="linkbox"></div>
+     <div class="linkbox">信息展示</div>
     </div>
     <div id="personal-introduction-box">
      <p class="welcomep"><span class="welcomespan">用代码构建秩序，用创新定义未来</span><span style="margin-top:7px;font-size:1.2rem;">欢迎来到我的个人网站:</span></p>
@@ -224,7 +234,7 @@
     burger.addEventListener("click",navigationBox)
     function navigationBox(){
     if (burger.checked){
-    document.getElementById("navigation-box").style.display="flex"
+    document.getElementById("navigation-box").style.display="block"
 }else{
     document.getElementById("navigation-box").style.display="none"
 }
