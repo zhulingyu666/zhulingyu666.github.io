@@ -24,7 +24,7 @@
     height: var(--body-height);
     }
     #topbar{
-    position:absolute;
+    position:fixed;
     width: var(--body-width);
     max-width:600px;
     height:var(--topbar-height);
@@ -39,6 +39,7 @@
     display:flex;
     align-items:center;
     top:0;
+    left:0;
     }
     @keyframes borderflash{
     from{border-left:10px solid #FFFFFF;}
@@ -155,16 +156,47 @@
   left: 5px;
 }
   #navigation-box{
-  position:absolute;
+  position:fixed;
+  left:0;
   top:var(--topbar-height);
   width:var(--body-width);
   height:var(--body-height);
+  --max-width:500px;
+  max-width:var(--max-width);
+  max-height:800px;
   background-color:#FFFFFF90;
   display:none;/*flex，默认为none*/
   backdrop-filter: blur(2px);
-  border-bottom-right-radius: 50px;
+  border-bottom-right-radius: 100px;
+  will-change: clip-path; /* 提前告诉浏览器要动画 */
+  transform: translateZ(0); /* 强制GPU加速 */
+  backface-visibility: hidden; /* 减少闪烁 */
+  animation: navigationappear 0.4s ease-out;
+  z-index:2;
+  flex-wrap: wrap;
   }
-  
+  @keyframes navigationappear{
+  from{
+  -webkit-clip-path: polygon(0 0, 17% 0, 17% 15%, 0 15%);
+  clip-path: polygon(0 0, 17% 0, 17% 15%, 0 15%);}
+  to{
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}
+  }
+  .linkbox{
+  width:var(--body-width);
+  max-width:var(--max-width);
+  height:50px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  font-size:1.5rem;
+  color:#6300FF;
+  font-weight: bold;
+  padding-left: 10px;
+  cursor: pointer;
+  }
     </style>
     <div id="topbar">
      <label class="burger" for="burger">
@@ -177,7 +209,7 @@
     
     </div>
     <div id="navigation-box">
-     <div class="linkbox">简介</div>
+     <div class="linkbox" href="#personal-introduction-box">简介</div>
      <div class="linkbox"></div>
     </div>
     <div id="personal-introduction-box">
