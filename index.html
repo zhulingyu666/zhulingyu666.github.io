@@ -327,32 +327,34 @@
    }
   }
   
-  
 .lazy-img-container {
   position: relative;
   width: 100%;
+  height: auto;
   overflow: hidden;
+  background: #f1f1f1;
 }
 .lazy-img-thumb,
 .lazy-img-full {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 .lazy-img-thumb {
   filter: blur(6px);
   transform: scale(1.05);
 }
 .lazy-img-full {
+  position: absolute;
+  top: 0;
+  left: 0;
   opacity: 0;
   transition: opacity 0.7s ease-out;
 }
 .lazy-img-full.loaded {
   opacity: 1;
 }
+
 
   /* 响应式适配 */
   @media (max-width: 600px) {           
@@ -399,8 +401,7 @@
      <div id="case-box">
       <div class="case-card">
        <div class="case-title">仿win11登录界面</div>
-        <lazy-img src="./pictures/case1.png" thumb="./pictures/case1nf.png">
-      
+        <lazy-img src ="./pictures/case1.png" thumb="./pictures/case1nf.png"></lazy-img>
       </div>
       <div class="case-card">
        
@@ -468,40 +469,28 @@ class LazyImg {
     const wrap = document.createElement('div');
     wrap.className = 'lazy-img-container';
 
-    // 先给一个默认比例，防止高度为0
-    wrap.style.paddingTop = '75%';
-
     const thumbImg = document.createElement('img');
     thumbImg.className = 'lazy-img-thumb';
     thumbImg.src = thumbSrc;
 
     const fullImg = document.createElement('img');
     fullImg.className = 'lazy-img-full';
-    fullImg.src = fullSrc;
 
     wrap.appendChild(thumbImg);
     wrap.appendChild(fullImg);
     el.replaceWith(wrap);
 
-    // 加载图片，成功就替换比例
-    const tempImg = new Image();
-    tempImg.src = fullSrc;
-
-    tempImg.onload = () => {
-      const ratio = tempImg.width / tempImg.height;
-      wrap.style.paddingTop = (100 / ratio) + '%';
-    };
-
-    // 高清图加载完就显示
     fullImg.onload = () => {
       fullImg.classList.add('loaded');
     };
+    fullImg.src = fullSrc;
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   LazyImg.init();
 });
+
     </script>
     </body>
 </html>
