@@ -5,9 +5,11 @@
         <meta http-equiv="content-language" content="zh-CN">
         <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 社交分享 -->
         <meta property="og:title" content="朱凌瑀的个人网站——把热爱编译成未来。">
         <meta property="og:description" content="用代码构建秩序，用创新定义未来 | 热爱不止于技术，探索不止于当下 | 欢迎来到我的个人网站，点进来认识认识我吧！">
-        <meta property="og:url" content="https://zhulingyu666.github.io/zhulingyu/">
+        <meta property="og:url" content="https://zhulingyu666.github.io/">
+        <meta property="og:image" content="https://zhulingyu666.github.io/pictures/ogimg.jpg">
         <meta name="description" content="您好，我叫朱凌瑀，欢迎来到我的个人网站 | 以代码为笔，以技术为光，照亮未知的世界 | 热爱不止于技术，探索不止于当下 | 如果可以，我们一起努力！">
         <meta name="keywords" content="朱凌瑀, 个人网站, 前端开发">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -37,6 +39,7 @@
     background-attachment: fixed;
     width: var(--body-width);
     height: var(--body-height);
+    
     font-family:
      "Inter",
      "Alibaba PuHuiTi",
@@ -44,6 +47,7 @@
      "Microsoft YaHei",
      sans-serif;
     }
+
     #topbar{
     position:fixed;
     width: var(--body-width);
@@ -206,6 +210,7 @@
   backface-visibility: hidden; /* 减少闪烁 */
   animation: navigationappear 0.4s ease-out;
   z-index:2;
+  overflow-y: auto;
   }
   @keyframes navigationappear{
   from{
@@ -389,6 +394,10 @@
     <div id="navigation-box">
      <div class="linkbox" href="#personal-introduction-box">简介</div>
      <div class="linkbox" href="#information-show-box">案例展示 / 项目经验</div>
+     <div class="linkbox" href="#information-show-box">案例展示 / 项目经验</div>
+     <div class="linkbox" href="#information-show-box">案例展示 / 项目经验</div>
+     <div class="linkbox" href="#information-show-box">案例展示 / 项目经验</div>
+     <div class="linkbox" href="#information-show-box">案例展示 / 项目经验</div>
     </div>
     <div id="personal-introduction-box">
      <p class="welcomep"><span class="welcomespan">用代码构建秩序，用创新定义未来</span><span style="margin-top:7px;font-size:1.2rem;">欢迎来到我的个人网站:</span></p>
@@ -490,7 +499,7 @@ class LazyImg {
 document.addEventListener('DOMContentLoaded', () => {
   LazyImg.init();
 });
-
+/*豆包科技结束end*/
     </script>
     </body>
 </html>
