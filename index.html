@@ -3,8 +3,8 @@
     <head> 
         <meta charset="UTF-8"> 
         <meta http-equiv="content-language" content="zh-CN">
-        <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 仅保留这1个viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <!-- 社交分享 -->
         <meta property="og:title" content="朱凌瑀的个人网站——把热爱编译成未来。">
         <meta property="og:description" content="用代码构建秩序，用创新定义未来 | 热爱不止于技术，探索不止于当下 | 欢迎来到我的个人网站，点进来认识认识我吧！">
@@ -17,7 +17,9 @@
         <meta name="msvalidate.01" content="A7FD3F19D53DE996F6718AA1790486EA" />
         <meta name="sogou_site_verification" content="vCBJWPLcHc" />
         <meta name="360-site-verification" content="d3bddb3aa213316df967d1780c4b810b" />
-        
+        <!-- IE 兼容元标签 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="msapplication-tap-highlight" content="no">
         <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
         <meta name="robots" content="index, follow">
         <title>朱凌瑀-用代码构建秩序，用创新定义未来-欢迎来到我的个人网站</title>
@@ -38,6 +40,7 @@
     }
     body{
     background: linear-gradient(135deg,#4D2EFF,#0800FF75);
+    
     background-attachment: fixed;
     width: var(--body-width);
     height: var(--body-height);
@@ -49,7 +52,19 @@
      "Microsoft YaHei",
      sans-serif;
     }
-
+    noscript{
+    position: fixed;
+    z-index:9999;
+    font-size: 1rem;
+    left: 10px;
+    color: red;
+    width: auto;
+    height: auto;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    
+    border-radius:15px;
+    }
     #topbar{
     position:fixed;
     width: var(--body-width);
@@ -95,6 +110,7 @@
     #name-show{
     background: linear-gradient(90deg, #00AFFF, #46D2FF,90%,#00AFFF);
     -webkit-background-clip: text;
+    -moz-background-clip: text;
     background-clip: text;
     color: transparent;
     font-size:5rem;
@@ -108,6 +124,7 @@
     text-align:center;
     background: linear-gradient(90deg, #FFFFFF, #FF8B8B);
     -webkit-background-clip: text;
+    -moz-background-clip: text;
     background-clip: text;
     color: transparent;
     transform: translateX(20px);
@@ -120,6 +137,7 @@
     background: linear-gradient(90deg, #FFFB00,#E8B9FF,#A2FFF3);
     -webkit-background-clip: text;
     background-clip: text;
+    -moz-background-clip: text;
     color: transparent;
     background-size: 200% 100%; /* 放大背景，让渐变滑动更丝滑 */
     background-position: 0 0;
@@ -209,6 +227,7 @@
   border-bottom-right-radius: 5vw;
   will-change: clip-path; /* 提前告诉浏览器要动画 */
   transform: translateZ(0); /* 强制GPU加速 */
+  -webkit-transform: translateZ(0);
   backface-visibility: hidden; /* 减少闪烁 */
   animation: navigationappear 0.4s ease-out;
   z-index:3;
@@ -240,6 +259,7 @@
   }
   .linkbox:hover{
   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter:blur(5px);
   }
   #case-show-box{
   display:flex;
@@ -253,7 +273,26 @@
   #school-show{
   color:#FFFB00;
   margin-top: 10px;
+  cursor: pointer;
+  position: relative;
   }
+  #school-show::after {
+  content: '';
+   position: absolute;
+   left: 0;
+   bottom: -2px;
+   width: 100%;
+   height: 2px;
+   background: #FFFB00;
+   transform: scaleX(0);
+   transform-origin: center center; /* 从中间展开 */
+   transition: transform 0.3s ease;
+   will-change: transform;
+   backface-visibility: hidden; /* 额外防闪烁 */
+ }
+ #school-show:hover::after {
+   transform: scaleX(1);
+ }
   .case-show-title{
   text-align:left;
   font-size:1.5rem;
@@ -367,6 +406,26 @@
 }
 
 
+
+/* 适配浏览器 - 支持backdrop-filter的浏览器：显示毛玻璃 */
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  #topbar { background: linear-gradient(90deg,#A98BFF,transparent); }
+}
+/* 不支持的浏览器：显示半透纯色兜底 */
+@supports not (backdrop-filter: blur(1px)) and not (-webkit-backdrop-filter: blur(1px)) {
+  #topbar { background: rgba(169,139,255,0.7); }
+}
+/* 支持grid的浏览器：用grid布局 */
+@supports (display: grid) {
+  #case-box { display: grid; }
+}
+/* 不支持的浏览器：用flex布局兜底 */
+@supports not (display: grid) {
+  #case-box { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .case-card { flex: 0 0 200px; margin-bottom: 1rem; }
+}
+
+
   /* 响应式适配 */
   @media (max-width: 600px) {           
   #case-box {
@@ -386,7 +445,11 @@
   }
   
 }
+
     </style>
+    <noscript>
+    * 当前无script，请打开script。
+    </noscript>
     <div id="topbar">
      <label class="burger" for="burger">
      <input type="checkbox" id="burger">
@@ -400,13 +463,12 @@
     <div id="navigation-box">
      <div class="linkbox" href="#personal-introduction-box">简介</div>
      <div class="linkbox" href="#case-show-box">案例展示 / 项目经验</div>
-
     </div>
     <div id="personal-introduction-box">
      <p class="welcomep"><span class="welcomespan">用代码构建秩序，用创新定义未来</span><span style="margin-top:7px;font-size:1.2rem;">欢迎来到我的个人网站:</span></p>
      <h1 id="name-show">朱凌瑀</h1>
      <p class="Brief-about">————名技术爱好者</p>
-     <p id="school-show"> ©2026 朱凌瑀｜汉王镇中心中学</p>
+     <p id="school-show" title="单击以了解"> ©2026 朱凌瑀｜汉王镇中心中学</p>
     </div>
     <div id="case-show-box">
      <h1 class="case-show-title">案例展示 / 项目经验：</h1>
@@ -425,9 +487,7 @@
      </div>
 
     </div>
-    <noscript>
-    当前无script，请打开script。
-    </noscript>
+ 
     <script>
     // 替换原burger点击代码
 const burger = document.getElementById('burger'); // 新增：获取DOM元素
@@ -481,7 +541,9 @@ document.querySelectorAll('.linkbox').forEach(box => {
   });
 });
 
-
+     
+       
+       
 /*豆包科技——你值得拥有*/
 class LazyImg {
   static init() {
@@ -527,7 +589,9 @@ class LazyImg {
 document.addEventListener('DOMContentLoaded', () => {
   LazyImg.init();
 });
+
 /*豆包科技结束end*/
     </script>
+
     </body>
 </html>
