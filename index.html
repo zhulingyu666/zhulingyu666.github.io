@@ -443,6 +443,7 @@
   border-top: dashed 5px #EBEBEB20;
   background: rgba(255,255,255,.05);
   backdrop-filter: blur(5px);
+  border-bottom: solid 3px #6300FF50;
   }
   #ability-box{
   align-items: center;
@@ -450,6 +451,46 @@
   text-align: center;
   padding-top: 40px;
   padding-bottom: 55px;
+  
+  }
+  #contactmebox{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  }
+  .cimg{
+  width:150px;
+  
+  }
+  #contactbar{
+  width: 90%;
+  min-width: 200px;
+  max-width: 300px;
+  display: flex;
+  justify-content: space-between; /* 左右两端对齐 */
+  align-items: center;
+  color: #00DDFF;
+  padding-right: 25px;
+  font-size: 1.3em;
+  margin-top: 25px;
+  padding-left: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(22px) saturate(200%);
+  -webkit-backdrop-filter: blur(22px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(255, 255, 255, 0.2) inset;
+  transition: 0.05s;
+  }
+  #contactbar:hover{
+  background: rgba(255, 255, 255, 0.2);
+  
+  }
+  #contactbar:active{
+  transform: scale(1.01);
   }
 /* 适配浏览器 - 支持backdrop-filter的浏览器：显示毛玻璃 */
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
@@ -508,6 +549,7 @@
      <div class="linkbox" href="#personal-introduction-box">简介</div>
      <div class="linkbox" href="#case-show-box">案例展示 / 项目经验</div>
      <div class="linkbox" href="#ability-show">个人能力</div>
+     <div class="linkbox" href="#contactmebox">联系我</div>
     </div>
     <div id="personal-introduction-box">
      <p class="welcomep"><span class="welcomespan">用代码构建秩序，用创新定义未来</span><span style="margin-top:7px;font-size:1.2rem;">欢迎来到我的个人网站:</span></p>
@@ -558,6 +600,14 @@
      Bootloader 操作
      系统底层理解</p>
      </div>
+    </div>
+    
+    <div id="contactmebox">
+     <h1 style="width: var(--body-width);text-align: center;">联系我：</h1>
+     <div id="contactbar">
+      <p>微信公众号:</p><img src="./pictures/vxgzh.jpeg" class="cimg">
+     </div>
+    
     </div>
     <script>
     // 替换原burger点击代码
