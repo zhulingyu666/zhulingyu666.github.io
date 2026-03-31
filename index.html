@@ -712,7 +712,18 @@ document.addEventListener('click', (e) => {
   }
 });
 
-  
+  // 鼠标滚轮上下滚动 → 名言区域左右滑动（核心代码）
+
+goodsentencesbox.addEventListener('wheel', (e) => {
+  e.preventDefault(); // 阻止默认的上下滚动行为
+  // 核心：把滚轮的上下偏移量(deltaY)转为横向滚动的偏移量
+  // 乘以0.5是滑动速度系数，数值越大滑得越快，可自行调整（推荐0.3-0.8）
+  goodsentencesbox.scrollBy({
+    left: e.deltaY * 0.5, 
+    behavior: 'smooth' // 平滑滑动，和原网站交互风格一致
+  });
+}, { passive: false }); // 必须加，否则preventDefault可能失效
+
      const textArr = [
        '代码是写给机器看的，逻辑是写给未来看的',
        '不迷信框架，只信仰逻辑；不追风口，只打磨极致',
