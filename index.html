@@ -460,29 +460,7 @@
 .lazy-img-full.loaded {
   opacity: 1;
 }
-  #classmatebox{
-   width:var(--body-width);
-   position: absolute;
-   z-index: 3;
-   height:480px;
-   max-width: 650px;
-   display:none;
-   justify-content: center;
-   left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(22px) saturate(200%);
-  -webkit-backdrop-filter: blur(22px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    0 1px 2px rgba(255, 255, 255, 0.2) inset;
   
-  }
-  .classmoretitle{
-  color: #D1B9FF;
-  }
   #ability-show{
   font-size: 1rem;
   width: var(--body-width);
@@ -543,8 +521,48 @@
   #contactbar:active{
   transform: scale(1.01);
   }
-
-
+  #goodsentencesbox{
+  background-color:#3500FF25;
+  border-top: solid 3px #0800FF50;
+  backdrop-filter: blur(10px) saturate(1.2); /* 模糊+增强饱和度 */
+  -webkit-backdrop-filter: blur(10px) saturate(1.2); /* Safari 兼容 */
+  width: var(--body-width);
+  display: block;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-x: auto;
+  white-space: nowrap;
+  max-height: 190px;
+  padding: 20px 0px; 
+  }
+  #goodsentences{
+  width: 3000px;
+  display: flex;
+         
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+  }
+  .sentence{
+  border-radius: 25px;
+  display: block;
+  background-color: #F7F7F710;
+  height: 25px;
+  color: #FFFB00;
+  border-bottom: solid 2px #4C00FF90;
+  font-size: 1.1rem;
+  padding: 0 10px;
+  font-family: "KaiTi", "STKaiti", "楷体", "华文楷体", serif;
+  font-weight: 800;
+  white-space: nowrap;     
+  flex-shrink: 0;         
+  transition: 0.15s;
+  }
+  .sentence:hover{
+  transform: scale(1.07);
+  border: solid 1px #FFE400;
+  }
   /* 响应式适配 */
   @media (max-width: 600px) {           
   #case-box {
@@ -589,6 +607,7 @@
     <div id="navigation-box">
      <div class="linkbox" href="#personal-introduction-box">简介</div>
      <div class="linkbox" href="#case-show-box">案例展示 / 项目经验</div>
+     <div class="linkbox" href="#goodsentencesbox">名言警句</div>
      <div class="linkbox" href="#ability-show">个人能力</div>
      <div class="linkbox" href="#contactmebox">联系我</div>
     </div>
@@ -598,14 +617,7 @@
      <p class="Brief-about">————名技术爱好者</p>
      <p id="school-show" title="单击以了解"> ©2026 朱凌瑀｜汉王镇中心中学</p>
     </div>
-    
-    <!--  班级人物，等等再做吧  -->
-    <div id="classmatebox">
-     <h1 class="classmoretitle">班级详情：</h1>
-     
-    
-    </div>
-    
+   
     
     <div id="case-show-box">
      <h1 class="case-show-title">案例展示 / 项目经验：</h1>
@@ -624,6 +636,19 @@
      </div>
 
     </div>
+    
+    
+    
+    <div id="goodsentencesbox">
+     <div id="goodsentences">
+     
+     </div>
+    
+    
+    
+    </div>
+    
+    
     
     <div id="ability-show">
    
@@ -653,7 +678,7 @@
      </div>
     </div>
     <script>
-    isIEBrowser()
+    
     // 检测是否为IE浏览器（全版本：IE6-IE11）
 function isIEBrowser() {
   const userAgent = window.navigator.userAgent;
@@ -680,10 +705,80 @@ document.addEventListener('click', (e) => {
   }
 });
 
+  
+     const textArr = [
+       '代码是写给机器看的，逻辑是写给未来看的',
+       '不迷信框架，只信仰逻辑；不追风口，只打磨极致',
+       '用一行行代码，把想象变成可触摸的现实',
+       '技术人的浪漫，是让0和1，生长出无限可能',
+       '技术的尽头不是答案，是永远有下一个问题等待被解决',
+       '向未知探索，向效率极致；做时代的技术破局者',
+       '今日深耕底层，明日策马领跑；技术人，永不止步',
+       '不是时代选择了技术，是技术人重塑了时代',
+       '屏幕微光，照见星辰大海；指尖敲下的，是梦想的序章',
+       '技术是冰冷的，但热爱是滚烫的',
+       '把复杂留给算法，把简单留给用户，把热爱留给自己',
+       '技，以致远；术，以立身',
+       '深耕技术，策马向前',
+       '一屏一世界，一码一乾坤；用色彩勾勒，让界面呼吸',
+       '不止于美观，更在于流畅；把每一次渲染，都变成用户的目光',
+       '前端人的浪漫，是在像素的世界里，构建出温度与无限可能。',
+       '精修DOM，优化渲染；以极致性能，撑起千万用户的期待',
+       '深耕JS，解构框架；做交互的摆渡人，让逻辑在指尖流淌',
+       '跨端同源，无缝流转；马年驭风，用技术韧性突破边界',
+       '心有大局，码定乾坤',
+       '算力为翼，智行远方',
+       '敬畏每一次服务中断，珍视每一秒系统可用；于细微处见真章，于稳健中见功夫',
+       '测试只能证明缺陷的存在，不能证明不存在',
+       '代码被阅读的次数，远多于被编写的次数',
+       '任何傻瓜都能写出计算机能理解的代码，优秀的程序员写出人类能理解的代码',
+       '调试的难度是编写代码的两倍。所以，如果你写代码时绞尽脑汁，那你怎么调试它呢？',
+     ]
+     let index = 0
+     
+     function createNextP() {
+       if (index >= textArr.length) return
+       const centence = document.createElement('centence')
+       centence.innerHTML = textArr[index]
+       goodsentences.appendChild(centence)
+       centence.classList.add('sentence') // ✅ 直接加类名
+       index++
+       createNextP()
+      
+     }
+     // 开始执行
+    createNextP()
     
-    
-    
-    
+    // 名言区域自动轮播：鼠标悬停暂停，离开继续
+const scrollBox = document.getElementById('goodsentencesbox');
+let scrollTimer = null;
+// 轮播核心函数
+function autoScroll() {
+  scrollTimer = setInterval(() => {
+    // 每次滑动1px，速度平缓，可改数值调快慢
+    scrollBox.scrollLeft += 1;
+    // 滑到最右侧，回到起点，循环轮播
+    if (scrollBox.scrollLeft >= scrollBox.scrollWidth - scrollBox.clientWidth) {
+      scrollBox.scrollLeft = 0;
+    }
+  }, 30); // 时间间隔，越小越快，默认30ms
+}
+// 页面加载后开始轮播
+window.addEventListener('load', autoScroll);
+// 鼠标悬停暂停
+scrollBox.addEventListener('mouseenter', () => {
+  clearInterval(scrollTimer);
+});
+// 鼠标离开继续
+scrollBox.addEventListener('mouseleave', () => {
+  autoScroll();
+});
+// 页面卸载清除定时器，防止内存泄漏
+window.addEventListener('unload', () => {
+  clearInterval(scrollTimer);
+});
+
+
     const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
