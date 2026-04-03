@@ -565,6 +565,30 @@
   transform: scale(1.07);
   border: solid 2px #FFE400;
   }
+  #DataStatisticsBox{
+  width: var(--body-width);
+  height: auto;
+  color: #FFFFFF;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+  }
+  #visitsBox{
+  color: white; 
+  }
+  #visitsBox::after{
+  content: "|";
+  font-weight: bold;
+  color: #00F4FF;
+  display: inline-block;
+  transform: scale(1.2,2.5) translateY(-35%);
+  }
+  #visitsBox > span{
+  color: #FF00CE;
+  font-weight: bold;
+  font-size: 2.5rem;
+  }
   /* 响应式适配 */
   @media (max-width: 600px) {           
   #case-box {
@@ -615,6 +639,7 @@
      <div class="linkbox" data-target="#goodsentencesbox">名言警句</div>
      <div class="linkbox" data-target="#ability-show">个人能力</div>
      <div class="linkbox" data-target="#contactmebox">联系我</div>
+     <div class="linkbox" data-target="#DataStatisticsBox">数据统计</div>
    </div>
 
     
@@ -684,6 +709,18 @@
       <p>QQ聊天群:</p><lazy-img src ="./pictures/qqchatq.jpg" thumb="./pictures/qqchatqnf.jpg" class="cimg"></lazy-img>
      </div>
     </div>
+   
+   
+   
+   <div id="DataStatisticsBox">
+    <div id="visitsBox">
+    总访问量：<span id="busuanzi_value_site_pv">0</span> 
+    </div>
+   
+   
+   
+   </div>
+
     <script>
     
   
@@ -890,6 +927,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /*豆包科技结束end*/
     </script>
-
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+   
     </body>
 </html>
